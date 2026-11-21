@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تدبير — هندسة وتنظيم التشغيل التعليمي</title>
+  <meta name="description" content="تدبير: منظومة برمجية لإدارة السناتر التعليمية على Windows — تعمل بدون إنترنت 100%، بدفعة واحدة مدى الحياة ($100 / $200 عالمياً، أو 5,000 / 10,000 ج.م داخل مصر)." />
+  <link rel="icon" type="image/png" href="assets/logo-favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=8" />
+</head>
+<body>
+
+  <!-- Top Scroll Progress Line -->
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Compact Top Release Bar -->
+  <div class="release-bar">
+    <div class="container release-inner">
+      <div class="release-meta">
+        <span class="signal-dot" aria-hidden="true"></span>
+        <span>منظومة تدبير · الإصدار <strong dir="ltr">Pro 2.3.0</strong> &amp; <strong dir="ltr">Basic 1.2.0</strong></span>
+        <span class="hide-sm muted-bar">· يعمل على Windows بدون إنترنت 100%</span>
+      </div>
+      <a href="assets/official-pricing.pdf" target="_blank" rel="noopener" class="release-doc">وثيقة الأسعار PDF ↗</a>
+    </div>
+  </div>
+
+  <!-- Sticky Architectural Header -->
+  <header id="navbar" class="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="brand" aria-label="تدبير — الصفحة الرئيسية">
+        <img src="assets/logo-ar-dark.png" alt="تدبير" class="brand-wordmark logo-for-light" />
+        <img src="assets/logo-ar-light.png" alt="تدبير" class="brand-wordmark logo-for-dark" />
+        <span class="brand-divider hide-xs" aria-hidden="true"></span>
+        <span class="brand-tag hide-xs">منصة وتقنيات تعليمية</span>
+      </a>
+
+      <nav class="nav-links" aria-label="التنقل الرئيسي">
+        <a href="#console-demo">المعاينة التفاعلية</a>
+        <a href="#roles-matrix">الأطراف الثلاثة</a>
+        <a href="#capabilities">قدرات النظام</a>
+        <a href="#theater">الفيديوهات</a>
+        <a href="#pricing">الأسعار</a>
+        <a href="#docs">الأدلة PDF</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="تبديل المظهر النهاري والليلي" title="تبديل المظهر">
+          <svg class="theme-icon-light" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="theme-icon-dark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+        <a href="#pricing" class="btn btn-primary btn-sm nav-cta">
+          <span>الأسعار</span>
+          <span class="hide-xs">والترخيص</span>
+          <span class="arrow-rtl" aria-hidden="true">←</span>
+        </a>
+        <button id="mobile-menu-btn" class="icon-btn mobile-menu-trigger" type="button" aria-label="فتح القائمة" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-drawer" class="mobile-drawer" hidden>
+      <div class="container mobile-drawer-inner">
+        <a href="#console-demo" class="mobile-link">جرّب شاشات النظام الآن</a>
+        <a href="#roles-matrix" class="mobile-link">صاحب السنتر والأستاذ والطالب</a>
+        <a href="#capabilities" class="mobile-link">القدرات الـ 6 الأساسية</a>
+        <a href="#theater" class="mobile-link">مسرح الشروحات المرئية (6 فيديوهات)</a>
+        <a href="#honesty" class="mobile-link">الصراحة التامة وحدود النظام</a>
+        <a href="#pricing" class="mobile-link">النسخ والأسعار ($100 / $200)</a>
+        <a href="#docs" class="mobile-link">مكتبة الأدلة الرسمية (7 ملفات PDF)</a>
+        <a href="#faq" class="mobile-link">الأسئلة الشائعة</a>
+        <a href="#about" class="mobile-link">وراء «تدبير» والخارطة</a>
+        <a href="#contact" class="btn btn-primary btn-full mobile-link">اطلب نسختك الآن ←</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HERO: Centered Geometric Precision + Interactive Command Console ================= -->
+    <section class="hero">
+      <div class="hero-grid-bg" aria-hidden="true"></div>
+      <div class="container hero-shell">
+        <div class="hero-copy-center">
+          <div class="status-capsule hero-anim">
+            <span class="signal-dot" aria-hidden="true"></span>
+            <span>نظام إدارة السناتر التعليمية</span>
+            <span class="capsule-sep" aria-hidden="true">/</span>
+            <span class="mono-tag" dir="ltr">OFFLINE 100%</span>
+          </div>
+
+          <h1 class="hero-title hero-anim">
+            إدارة سنترك التعليمية،
+            <br />
+            بصرامة هندسية <span class="accent-underline">بلا إنترنت.</span>
+          </h1>
+
+          <p class="hero-lead hero-anim">
+            من الدفاتر وحسابات آخر الشهر إلى نظام متكامل على ويندوز يضبط <strong>الطلاب، الحصص، أجور الأساتذة، الكنترول، ومزامنة المحطات</strong> — بدفعة واحدة مدى الحياة، وبدون أي اشتراك شهري.
+          </p>
+
+          <div class="hero-actions hero-anim">
+            <a href="#pricing" class="btn btn-primary btn-lg">
+              <span>اكتشف النسخ والأسعار</span>
+              <span class="arrow-rtl" aria-hidden="true">←</span>
+            </a>
+            <a href="#theater" class="btn btn-ghost btn-lg" id="hero-watch-btn">
+              <span class="play-pill" aria-hidden="true">▶</span>
+              <span>شاهد الديمو الحي</span>
+            </a>
+          </div>
+
+          <div class="hero-footnotes hero-anim">
+            <span>نسختان: <strong dir="ltr">Setup</strong> + <strong dir="ltr">Portable</strong></span>
+            <span class="dot-sep" aria-hidden="true">·</span>
+            <span>تخصيص العملة ومفتاح الدولة تلقائياً</span>
+            <span class="dot-sep" aria-hidden="true">·</span>
+            <a href="#docs">7 أدلة PDF جاهزة للفحص ↓</a>
+          </div>
+        </div>
+
+        <!-- Wide Interactive Product Command Console -->
+        <div id="console-demo" class="console-wrap hero-anim">
+          <div class="console-header-note">
+            <span class="console-hint">💡 مختبر معاينة حي: اضغط على التبويبات وجرّب عناصر التحكم أدناه بنفسك</span>
+            <span class="console-version mono-tag" dir="ltr">Tadbeer Pro 2.3.0 · Windows</span>
+          </div>
+
+          <div id="product-console" class="console-frame">
+            <!-- Console Chrome -->
+            <div class="console-chrome">
+              <div class="chrome-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="chrome-title">غرفة عمليات السنتر — واجهة النظام المحلية</div>
+              <div class="chrome-status">
+                <span class="signal-dot"></span>
+                <span>أوفلاين محلي 100%</span>
+              </div>
+            </div>
+
+            <!-- Console Navigation Tabs -->
+            <div class="console-tabs" role="tablist" aria-label="شاشات المعاينة التفاعلية">
+              <button type="button" class="c-tab active" data-ctab="students" role="tab" aria-selected="true">
+                <span class="c-tab-num" dir="ltr">01</span>
+                <span>الطلاب والبحث <kbd class="hide-xs" dir="ltr">Ctrl+K</kbd></span>
+              </button>
+              <button type="button" class="c-tab" data-ctab="treasury" role="tab" aria-selected="false">
+                <span class="c-tab-num" dir="ltr">02</span>
+                <span>الخزينة والقفل الشهري</span>
+              </button>
+              <button type="button" class="c-tab" data-ctab="payroll" role="tab" aria-selected="false">
+                <span class="c-tab-num" dir="ltr">03</span>
+                <span>الجدول والأجور</span>
+              </button>
+              <button type="button" class="c-tab" data-ctab="exams" role="tab" aria-selected="false">
+                <span class="c-tab-num" dir="ltr">04</span>
+                <span>الكنترول والاسبوتينغ</span>
+              </button>
+              <button type="button" class="c-tab" data-ctab="lan" role="tab" aria-selected="false">
+                <span class="c-tab-num" dir="ltr">05</span>
+                <span>مزامنة المحطات LAN</span>
+              </button>
+            </div>
+
+            <!-- Console Body -->
+            <div class="console-body">
+
+              <!-- PANEL 1: Live Search + 3-Metric Inspector -->
+              <div class="c-panel active" id="cpanel-students">
+                <div class="c-split">
+                  <div class="c-list-col">
+                    <div class="sim-search-bar">
+                      <label for="sim-student-search" class="sr-only">ابحث في الطلاب التجريبيين</label>
+                      <input id="sim-student-search" type="search" placeholder="جرّب الكتابة: أحمد، سارة، عمر..." autocomplete="off" />
+                      <span class="kbd-key" dir="ltr">Ctrl + K</span>
+                    </div>
+                    <div class="sim-student-list" id="sim-student-list">
+                      <button type="button" class="sim-row active" data-student-id="ahmed">
+                        <div>
+                          <strong>أحمد محمد عثمان</strong>
+                          <span>ثالث ثانوي · فيزياء + رياضيات</span>
+                        </div>
+                        <span class="pill-badge ok">مسدّد بالكامل</span>
+                      </button>
+                      <button type="button" class="sim-row" data-student-id="sara">
+                        <div>
+                          <strong>سارة خالد إبراهيم</strong>
+                          <span>أول ثانوي · باقة المواد العلمية</span>
+                        </div>
+                        <span class="pill-badge warn">متبقٍ جزء</span>
+                      </button>
+                      <button type="button" class="sim-row" data-student-id="omar">
+                        <div>
+                          <strong>عمر عبدالله حسن</strong>
+                          <span>ثاني ثانوي · كيمياء + أحياء</span>
+                        </div>
+                        <span class="pill-badge due">لم يسدّد بعد</span>
+                      </button>
+                      <button type="button" class="sim-row" data-student-id="lina">
+                        <div>
+                          <strong>لينا مصطفى أحمد</strong>
+                          <span>ثالث ثانوي · المركز الأول</span>
+                        </div>
+                        <span class="pill-badge ok">مسدّد بالكامل</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="c-inspector-col">
+                    <div class="inspector-head">
+                      <span class="mono-tag" dir="ltr">PAYMENT_CARD</span>
+                      <strong id="insp-name">أحمد محمد عثمان</strong>
+                    </div>
+                    <p class="inspector-sub" id="insp-class">ثالث ثانوي · تسجيل مؤكّد بالاسم</p>
+
+                    <div class="tri-metrics">
+                      <div class="tri-box">
+                        <span>المقرّر</span>
+                        <strong id="insp-due" dir="ltr">$120</strong>
+                      </div>
+                      <div class="tri-box">
+                        <span>المدفوع</span>
+                        <strong id="insp-paid" class="val-ok" dir="ltr">$120</strong>
+                      </div>
+                      <div class="tri-box">
+                        <span>المتبقي</span>
+                        <strong id="insp-rem" dir="ltr">$0</strong>
+                      </div>
+                    </div>
+
+                    <div class="inspector-log">
+                      <div class="log-line">
+                        <span>طريقة الدفع:</span>
+                        <strong id="insp-method">نقدي بالخزينة</strong>
+                      </div>
+                      <div class="log-line">
+                        <span>رسم التسجيل:</span>
+                        <strong id="insp-reg">مفصول في مسار مستقل ✓</strong>
+                      </div>
+                      <div class="log-line">
+                        <span>آخر موظف موثِّق:</span>
+                        <strong id="insp-staff">الاستقبال (سجل باسمه)</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PANEL 2: Treasury & Monthly Lock Simulator -->
+              <div class="c-panel" id="cpanel-treasury" hidden>
+                <div class="c-toolbar">
+                  <span>اختر الشهر لمعاينة آلية القفل الشهري الصارم:</span>
+                  <div class="sim-seg" role="group" aria-label="اختر الشهر">
+                    <button type="button" class="sim-seg-btn active" data-month="open">الشهر الجاري (مفتوح 🔓)</button>
+                    <button type="button" class="sim-seg-btn" data-month="locked">الشهر الماضي (مقفل 🔒)</button>
+                  </div>
+                </div>
+
+                <div class="treasury-grid" id="treasury-view">
+                  <div class="t-stat">
+                    <span>حالة الشهر</span>
+                    <strong id="tr-state" class="val-ok">مفتوح للتحصيل المباشر</strong>
+                    <p id="tr-state-desc">يسمح لموظف الاستقبال بتسجيل الدفعات ورسم التسجيل دون حاجة لإذن المدير.</p>
+                  </div>
+                  <div class="t-stat">
+                    <span>فصل المسارات المالية</span>
+                    <strong>اشتراك شهري ≠ رسم تسجيل</strong>
+                    <p>لا تختلط رسوم فتح الملف أو الملازم باشتراكات الحصص، مع إخراج كشف PDF مفصل لكل مسار.</p>
+                  </div>
+                  <div class="t-stat">
+                    <span>أمان القفل ضد التلاعب</span>
+                    <strong id="tr-guard">التعديل الخلفي مرصود</strong>
+                    <p id="tr-guard-desc">عند نهاية الشهر يُقفل السجل آلياً. أي سداد متأخر يتطلب «فترة استثنائية» بكلمة سر المدير.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PANEL 3: Auto Schedule & Teacher Pay Modes -->
+              <div class="c-panel" id="cpanel-payroll" hidden>
+                <div class="c-toolbar">
+                  <span>اختر نظام احتساب مستحقات الأستاذ:</span>
+                  <div class="sim-seg" role="group" aria-label="نوع التعاقد مع الأستاذ">
+                    <button type="button" class="pay-mode-btn active" data-paymode="session">بالحصة المؤكدة</button>
+                    <button type="button" class="pay-mode-btn" data-paymode="percent">نسبة من التحصيل</button>
+                    <button type="button" class="pay-mode-btn" data-paymode="salary">راتب شهري ثابت</button>
+                  </div>
+                </div>
+
+                <div class="payroll-stage">
+                  <div class="payroll-formula">
+                    <span class="mono-tag" dir="ltr">AUTO_LEDGER_ENGINE</span>
+                    <h4 id="pay-title">حساب الأجر = الحصص المؤكدة فعلياً × أجر الحصة</h4>
+                    <p id="pay-desc">لا يدخل أجر أي حصة ملغاة أو غير مؤكدة في كشف الأستاذ. يتم توليد جدول الشهر آلياً بمجرد ربط المادة باليوم والساعة.</p>
+                  </div>
+                  <div class="payroll-sample">
+                    <div class="p-row"><span>إجمالي الحصص المجدولة</span><strong dir="ltr">16 حصة</strong></div>
+                    <div class="p-row"><span>الحصص المؤكدة الحضور</span><strong class="val-ok" dir="ltr" id="pay-confirmed">14 حصة</strong></div>
+                    <div class="p-row"><span>المستحق الجاهز للصرف</span><strong class="val-gold" id="pay-total">محسوب آلياً ✓</strong></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PANEL 4: Exams & Interactive Spotting Calculator -->
+              <div class="c-panel" id="cpanel-exams" hidden>
+                <div class="c-split">
+                  <div class="exam-honor-preview">
+                    <div class="inspector-head">
+                      <span class="mono-tag" dir="ltr">PRO_CONTROL_A4</span>
+                      <strong>شيت الكنترول ولوحة الشرف</strong>
+                    </div>
+                    <p class="inspector-sub">ترتيب تلقائي للأوائل + شهادة تقدير وإشعار درجات PDF جاهزة للطباعة.</p>
+                    <div class="honor-rows">
+                      <div class="h-row"><span>🥇 1</span><strong>لينا مصطفى أحمد</strong><span class="mono-tag" dir="ltr">98.5%</span></div>
+                      <div class="h-row"><span>🥈 2</span><strong>أحمد محمد عثمان</strong><span class="mono-tag" dir="ltr">96.0%</span></div>
+                      <div class="h-row"><span>🥉 3</span><strong>آية عبدالرحمن</strong><span class="mono-tag" dir="ltr">94.5%</span></div>
+                    </div>
+                  </div>
+
+                  <div class="spotting-calc-box">
+                    <div class="inspector-head">
+                      <span class="mono-tag" dir="ltr">SPOTTING_ENGINE</span>
+                      <strong>حاسبة ورش الاسبوتينغ والمراجعات</strong>
+                    </div>
+                    <p class="inspector-sub">غيّر عدد التذاكر المبيعة وشاهد الفصل التلقائي لنسبة الأستاذ والسنتر:</p>
+                    <div class="calc-buttons">
+                      <button type="button" class="calc-tkt-btn" data-tickets="50">50 تذكرة</button>
+                      <button type="button" class="calc-tkt-btn active" data-tickets="85">85 تذكرة</button>
+                      <button type="button" class="calc-tkt-btn" data-tickets="120">120 تذكرة</button>
+                    </div>
+                    <div class="tri-metrics">
+                      <div class="tri-box"><span>التذاكر ($5)</span><strong id="spot-gross" dir="ltr">$425</strong></div>
+                      <div class="tri-box"><span>الأستاذ (60%)</span><strong id="spot-teacher" class="val-ok" dir="ltr">$255</strong></div>
+                      <div class="tri-box"><span>السنتر (40%)</span><strong id="spot-center" class="val-gold" dir="ltr">$170</strong></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PANEL 5: LAN Stations Sync Simulator -->
+              <div class="c-panel" id="cpanel-lan" hidden>
+                <div class="c-toolbar">
+                  <span>بنية الربط الداخلي في <strong dir="ltr">Pro 2.3.0</strong> عبر <code dir="ltr">.centerlink</code> (كل 15 ثانية):</span>
+                  <button type="button" class="sim-seg-btn" id="lan-disconnect-btn">جرّب فصل الشبكة مؤقتاً ⚡</button>
+                </div>
+
+                <div class="lan-topology">
+                  <div class="lan-node master" id="lan-master-node">
+                    <span class="mono-tag" dir="ltr">SERVER · ADMIN</span>
+                    <strong>جهاز المدير الرئيسي</strong>
+                    <small id="lan-master-status" class="val-ok">● يستقبل ويؤكّد التحديثات</small>
+                  </div>
+                  <div class="lan-bridge" id="lan-bridge">
+                    <span id="lan-bridge-text">⇄ مزامنة تلقائية كل 15 ثانية عبر شبكة السنتر</span>
+                  </div>
+                  <div class="lan-clients">
+                    <div class="lan-node">
+                      <span class="mono-tag" dir="ltr">RECEPTION ×2</span>
+                      <strong>محطات الاستقبال</strong>
+                      <small id="lan-rec-status" class="val-ok">تسجيل وتحصيل متزامن</small>
+                    </div>
+                    <div class="lan-node">
+                      <span class="mono-tag" dir="ltr">SUPERVISOR ×5</span>
+                      <strong>أجهزة المشرفين 👁</strong>
+                      <small class="muted-node">رصد ونتائج بلا أرقام أرباح</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROOF LEDGER: 4 Architectural Numbers ================= -->
+    <section class="proof-ledger">
+      <div class="container">
+        <div class="ledger-grid">
+          <div class="ledger-cell" data-reveal>
+            <span class="ledger-num" dir="ltr">100%</span>
+            <span class="ledger-label">تشغيل محلي كامل بدون إنترنت أو سحابة</span>
+          </div>
+          <div class="ledger-cell" data-reveal>
+            <span class="ledger-num" dir="ltr">0</span>
+            <span class="ledger-label">اشتراكات شهرية — ترخيص دائم مدى الحياة</span>
+          </div>
+          <div class="ledger-cell" data-reveal>
+            <span class="ledger-num" dir="ltr">13</span>
+            <span class="ledger-label">شاشة مترابطة للطلاب والمال والكنترول</span>
+          </div>
+          <div class="ledger-cell" data-reveal>
+            <span class="ledger-num" dir="ltr">216</span>
+            <span class="ledger-label">اختباراً برمجياً لضمان دقة الحساب والمزامنة</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SECTION 01: Interactive Perspective Matrix (Owner / Teacher / Student) ================= -->
+    <section id="roles-matrix" class="section">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="sec-idx" dir="ltr">01</span>
+          <div>
+            <span class="sec-kicker">تجربة مصممة حول أدوار السنتر</span>
+            <h2 class="section-title">كل طرف يرى ما يهمّه فقط — بدقة وأمان</h2>
+            <p class="section-desc">اضغط على أي دور لاستكشاف كيف يغيّر «تدبير» يوم العمل الفعلي ويفصل الصلاحيات تلقائياً.</p>
+          </div>
+        </div>
+
+        <div class="role-matrix" data-reveal>
+          <!-- Role Selector Cards -->
+          <div class="role-selector-col" role="tablist" aria-label="اختر الطرف المستفيد">
+            <button type="button" class="role-tab active" data-role="owner" role="tab" aria-selected="true">
+              <div class="r-tab-head">
+                <span class="r-emoji">🏛️</span>
+                <strong>صاحب ومدير السنتر</strong>
+              </div>
+              <p>رقابة شاملة على الخزينة، القفل الشهري، وأرباح السنتر دون أن يراها سواك.</p>
+            </button>
+
+            <button type="button" class="role-tab" data-role="staff" role="tab" aria-selected="false">
+              <div class="r-tab-head">
+                <span class="r-emoji">⌨️</span>
+                <strong>الاستقبال والمشرفون</strong>
+              </div>
+              <p>سرعة في التسجيل والتحصيل ورصد الحضور مع منع الحذف وإخفاء صافي الأرباح.</p>
+            </button>
+
+            <button type="button" class="role-tab" data-role="teacher" role="tab" aria-selected="false">
+              <div class="r-tab-head">
+                <span class="r-emoji">📐</span>
+                <strong>الأستاذ والمحاضر</strong>
+              </div>
+              <p>حصص متولدة آلياً، وأجور محسوبة فقط من الحصص المؤكدة وورش الاسبوتينغ.</p>
+            </button>
+
+            <button type="button" class="role-tab" data-role="student" role="tab" aria-selected="false">
+              <div class="r-tab-head">
+                <span class="r-emoji">🎓</span>
+                <strong>الطالب وولي الأمر</strong>
+              </div>
+              <p>ملف منضبط، نتائج امتحانات موثقة، لوحة شرف، وشهادات A4 رسمية.</p>
+            </button>
+          </div>
+
+          <!-- Role Detail Blueprint -->
+          <div class="role-detail-panel" id="role-detail-panel">
+            <div class="rd-top">
+              <span class="mono-tag" id="rd-code" dir="ltr">ROLE_01 · FULL_CONTROL</span>
+              <h3 id="rd-title">صاحب ومدير السنتر: أمان مالي بلا تسرب</h3>
+            </div>
+            <p class="rd-summary" id="rd-summary">تتحكم في كل شاردة وواردة عبر 13 شاشة مترابطة من جهازك الرئيسي، وتدير حتى محطتي استقبال و5 مشرفين عبر شبكة السنتر الداخلية دون اتصال بالإنترنت.</p>
+
+            <div class="rd-columns">
+              <div class="rd-col allow">
+                <h4>ما تحصل عليه وتراه</h4>
+                <ul id="rd-allow-list">
+                  <li>كشف لحظي للمقرّر والمدفوع والمتبقي لكل طالب.</li>
+                  <li>قفل تلقائي للشهور الماضية لا يُفتح إلا بكلمة سرك.</li>
+                  <li>تقارير مالية رسمية PDF مفصولة فيها الرسوم عن الاشتراكات.</li>
+                </ul>
+              </div>
+              <div class="rd-col protect">
+                <h4>كيف يحميك النظام</h4>
+                <ul id="rd-protect-list">
+                  <li>لا يمكن لأي موظف حذف طالب أو سداد نهائياً.</li>
+                  <li>حجب تام لإجمالي إيرادات السنتر وصافي الأرباح عن فريق العمل.</li>
+                  <li>نسخ احتياطي يومي آلي + تصدير يدوي على فلاشة بضغطة زر.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SECTION 02: 6 Architectural Capabilities Ledger (Border-Collapsed) ================= -->
+    <section id="capabilities" class="section section-muted">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="sec-idx" dir="ltr">02</span>
+          <div>
+            <span class="sec-kicker">الهندسة الداخلية للنظام</span>
+            <h2 class="section-title">ست ركائز تقضي على فوضى الدفاتر والأوراق</h2>
+            <p class="section-desc">مصمم ليعمل يومياً تحت ضغط الاستقبال والامتحانات، بنسخة مثبّتة <strong dir="ltr">Setup</strong> وأخرى محمولة <strong dir="ltr">Portable</strong>.</p>
+          </div>
+        </div>
+
+        <div class="cap-ledger" data-reveal>
+          <article class="cap-cell">
+            <div class="cap-top">
+              <span class="cap-num" dir="ltr">01 / FIN</span>
+              <span class="cap-badge">Basic &amp; Pro</span>
+            </div>
+            <h3>الخزينة والقفل الشهري الصارم</h3>
+            <p>نافذة تحصيل سريعة تقرأ المقرّر والمدفوع والمتبقي في لحظة، تفصل رسم التسجيل عن الاشتراك الشهري، وتقفل الشهور المنتهية ضد أي تعديل خفي.</p>
+          </article>
+
+          <article class="cap-cell">
+            <div class="cap-top">
+              <span class="cap-num" dir="ltr">02 / SCH</span>
+              <span class="cap-badge">Basic &amp; Pro</span>
+            </div>
+            <h3>توليد جدول الحصص وأجور الأساتذة</h3>
+            <p>اربط المادة بالأستاذ والصف مرة واحدة ليتولّد جدول الشهر كاملاً. مستحقات الأستاذ تُبنى حصراً من الحصص المؤكدة (بالحصة، نسبة، أو راتب).</p>
+          </article>
+
+          <article class="cap-cell">
+            <div class="cap-top">
+              <span class="cap-num" dir="ltr">03 / LAN</span>
+              <span class="cap-badge badge-pro">حصري لـ Pro</span>
+            </div>
+            <h3>محطات العمل ومزامنة <span dir="ltr">.centerlink</span></h3>
+            <p>جهاز المدير كخادم محلي يربط حتى <strong>محطتي استقبال و5 مشرفين</strong> عبر Wi-Fi أو كابلات السنتر بمزامنة كل 15 ثانية ومرونة لو انقطعت الشبكة.</p>
+          </article>
+
+          <article class="cap-cell">
+            <div class="cap-top">
+              <span class="cap-num" dir="ltr">04 / EXM</span>
+              <span class="cap-badge badge-pro">حصري لـ Pro</span>
+            </div>
+            <h3>الامتحانات وشيت الكنترول والشهادات</h3>
+            <p>إدارة اللجان والامتحانات (شهرية، فترية، تجريبية) مع استخراج آلي لشيت الكنترول ولوحة الشرف وطباعة شهادات التقدير وإشعارات الدرجات بمقاس A4.</p>
+          </article>
+
+          <article class="cap-cell">
+            <div class="cap-top">
+              <span class="cap-num" dir="ltr">05 / SPT</span>
+              <span class="cap-badge badge-pro">حصري لـ Pro</span>
+            </div>
+            <h3>إدارة ورش الاسبوتينغ والفعاليات</h3>
+            <p>محرك مستقل لبيع تذاكر المراجعات والورش والملازم وحساب المصروفات وتقسيم صافي الأرباح بين الأستاذ والسنتر دون أن يختلط بحساب الشهر.</p>
+          </article>
+
+          <article class="cap-cell">
+            <div class="cap-top">
+              <span class="cap-num" dir="ltr">06 / SEC</span>
+              <span class="cap-badge">حماية البيانات</span>
+            </div>
+            <h3>صلاحيات دقيقة ونسخ احتياطي يومي</h3>
+            <p>ثلاثة أدوار محكمة (مدير / مدخل بيانات / مشرف 👁) مع بصمة ترخيص رقمية <code dir="ltr">Ed25519</code>، ونسخ احتياطي تلقائي يحمي بياناتك من أي طارئ.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SECTION 03: Inline Video Cinema Theater ================= -->
+    <section id="theater" class="section">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="sec-idx" dir="ltr">03</span>
+          <div>
+            <span class="sec-kicker">شاهد شاشات البرنامج الفعلية</span>
+            <h2 class="section-title">مسرح الديمو التفاعلي — 6 جولات حقيقية بالصوت والصورة</h2>
+            <p class="section-desc">اختر أي فصل من القائمة لتشغيله مباشرة داخل المسرح (يشمل 5 عروض أفقية وريلز 65 ثانية الطولي للهاتف).</p>
+          </div>
+        </div>
+
+        <div class="theater-layout" data-reveal>
+          <!-- Active Cinema Stage -->
+          <div class="theater-stage">
+            <div class="theater-screen aspect-landscape" id="theater-screen">
+              <video id="theater-player" controls playsinline preload="none" poster="assets/demo-poster.png" src="assets/demo-landscape.mp4">
+                متصفحك لا يدعم تشغيل الفيديو.
+              </video>
+            </div>
+            <div class="theater-caption">
+              <div>
+                <span class="pill-badge neutral" id="theater-badge">Basic &amp; Pro</span>
+                <h3 id="theater-title">لوحة المعلومات وبداية التشغيل</h3>
+                <p id="theater-desc">نظرة عملية كاملة على الواجهة اليومية، مؤشرات السنتر اللحظية، وشريط البحث السريع عن ملف أي طالب.</p>
+              </div>
+              <button type="button" id="theater-play-btn" class="btn btn-primary btn-sm">▶ تشغيل الآن</button>
+            </div>
+          </div>
+
+          <!-- 6-Chapter Video Playlist -->
+          <div class="theater-playlist" role="tablist" aria-label="فصول الفيديو التوضيحي">
+            <button type="button" class="playlist-item active" data-video-src="assets/demo-landscape.mp4" data-video-poster="assets/demo-poster.png" data-video-aspect="landscape" data-badge="Basic &amp; Pro" data-title="لوحة المعلومات وبداية التشغيل" data-desc="نظرة عملية كاملة على الواجهة اليومية، مؤشرات السنتر اللحظية، وشريط البحث السريع عن ملف أي طالب." role="tab" aria-selected="true">
+              <img src="assets/demo-poster.png" alt="لوحة المعلومات" loading="lazy" />
+              <div class="pl-meta">
+                <span class="pl-tag">01 · Basic &amp; Pro</span>
+                <strong>لوحة المعلومات وبداية التشغيل</strong>
+                <small>الواجهة الرئيسية والبحث الفوري</small>
+              </div>
+            </button>
+
+            <button type="button" class="playlist-item" data-video-src="assets/demo-students.mp4" data-video-poster="assets/posters/students.png" data-video-aspect="landscape" data-badge="Basic &amp; Pro" data-title="الطلاب والتحصيل والمتأخرات" data-desc="تسجيل الطالب في ثوانٍ، نافذة السداد ذات الـ 3 مؤشرات، وفصل المتأخرات وقفل الشهور السابقة." role="tab" aria-selected="false">
+              <img src="assets/posters/students.png" alt="الطلاب والتحصيل" loading="lazy" />
+              <div class="pl-meta">
+                <span class="pl-tag">02 · Basic &amp; Pro</span>
+                <strong>الطلاب والتحصيل والمتأخرات</strong>
+                <small>ملفات الطلاب ونافذة الخزينة</small>
+              </div>
+            </button>
+
+            <button type="button" class="playlist-item" data-video-src="assets/demo-sync.mp4" data-video-poster="assets/posters/sync.png" data-video-aspect="landscape" data-badge="حصري لـ Pro" data-title="محطات العمل والمزامنة الشبكية LAN" data-desc="توليد ملفات الربط (.centerlink) لتوصيل أجهزة الاستقبال والمشرفين بالمدير بدون إنترنت كل 15 ثانية." role="tab" aria-selected="false">
+              <img src="assets/posters/sync.png" alt="المزامنة الشبكية" loading="lazy" />
+              <div class="pl-meta">
+                <span class="pl-tag pro">03 · حصري لـ Pro</span>
+                <strong>محطات العمل والمزامنة الشبكية</strong>
+                <small>ربط الاستقبال والمشرفين أوفلاين</small>
+              </div>
+            </button>
+
+            <button type="button" class="playlist-item" data-video-src="assets/demo-exams.mp4" data-video-poster="assets/posters/exams.png" data-video-aspect="landscape" data-badge="حصري لـ Pro" data-title="الامتحانات، الكنترول، والشهادات" data-desc="دورة الامتحانات كاملة من إنشاء اللجان ورصد الدرجات حتى لوحة الشرف وشهادات التقدير A4." role="tab" aria-selected="false">
+              <img src="assets/posters/exams.png" alt="الامتحانات والكنترول" loading="lazy" />
+              <div class="pl-meta">
+                <span class="pl-tag pro">04 · حصري لـ Pro</span>
+                <strong>الامتحانات، الكنترول، والشهادات</strong>
+                <small>شيت الكنترول ولوحة الشرف A4</small>
+              </div>
+            </button>
+
+            <button type="button" class="playlist-item" data-video-src="assets/demo-spotting.mp4" data-video-poster="assets/posters/spotting.png" data-video-aspect="landscape" data-badge="حصري لـ Pro" data-title="الفعاليات وورش الاسبوتينغ" data-desc="حساب مالي مستقل لتذاكر المراجعات والملازم والمصروفات، وحساب نسبة الأستاذ والسنتر بضغطة زر." role="tab" aria-selected="false">
+              <img src="assets/posters/spotting.png" alt="الاسبوتينغ" loading="lazy" />
+              <div class="pl-meta">
+                <span class="pl-tag pro">05 · حصري لـ Pro</span>
+                <strong>الفعاليات وورش الاسبوتينغ</strong>
+                <small>التذاكر وتوزيع أرباح الأستاذ</small>
+              </div>
+            </button>
+
+            <button type="button" class="playlist-item" data-video-src="assets/intro-video.mp4" data-video-poster="assets/posters/intro.png" data-video-aspect="portrait" data-badge="ريلز 65 ثانية (9:16)" data-title="الفيديو التعريفي المختصر" data-desc="خلاصة سريعة في دقيقة واحدة تشرح فكرة البرنامج والفرق العملي بين Basic و Pro." role="tab" aria-selected="false">
+              <img src="assets/posters/intro.png" alt="ريلز تعريفي" loading="lazy" />
+              <div class="pl-meta">
+                <span class="pl-tag">06 · 65 ثانية</span>
+                <strong>الفيديو التعريفي المختصر</strong>
+                <small>ملخص سريع للنسختين (طولي)</small>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SECTION 04: Engineering Honesty Ledger ================= -->
+    <section id="honesty" class="section section-muted">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="sec-idx" dir="ltr">04</span>
+          <div>
+            <span class="sec-kicker">وثيقة الشفافية الهندسية</span>
+            <h2 class="section-title">الصراحة التامة: ما يفعله النظام، وما لا يفعله</h2>
+            <p class="section-desc">علاقتنا مع صاحب السنتر تبدأ بالوضوح قبل الشراء — لا نعد إلا بما بنيناه واختبرناه فعلاً.</p>
+          </div>
+        </div>
+
+        <div class="honesty-ledger" data-reveal>
+          <div class="honesty-pane yes-pane">
+            <div class="pane-head">
+              <span class="pane-badge yes">✓ مضمون ومختبر</span>
+              <h3>ما صُمم «تدبير» لإتقانه</h3>
+            </div>
+            <ul>
+              <li>تشغيل محلي كامل <span dir="ltr">100%</span> على أجهزة <span dir="ltr">Windows</span> بدون اتصال بالإنترنت.</li>
+              <li>مزامنة تلقائية في <span dir="ltr">Pro</span> عبر شبكة السنتر الداخلية (<span dir="ltr">Wi-Fi</span> أو كابلات) كل 15 ثانية.</li>
+              <li>استمرار عمل المحطات لو أُغلق جهاز المدير مؤقتاً وترحيل التحديثات فور عودته.</li>
+              <li>توثيق إلكتروني لكل سداد باسم الموظف وإخراج تقارير رسمية وشهادات <span dir="ltr">PDF / A4</span>.</li>
+              <li>تسليم نسختين (<span dir="ltr">Setup</span> + <span dir="ltr">Portable</span>) مع نسخ احتياطي يومي آلي وتصدير يدوي.</li>
+            </ul>
+          </div>
+
+          <div class="honesty-pane no-pane">
+            <div class="pane-head">
+              <span class="pane-badge no">— حدود معلنة مسبقاً</span>
+              <h3>ما لا يفعله النظام (لتتأكد قبل الشراء)</h3>
+            </div>
+            <ul>
+              <li>لا يزامن عبر الإنترنت أو السحابة من خارج مبنى السنتر — بياناتك تبقى عندك وحدك.</li>
+              <li>لا يطبع إيصالات كاشير حرارية صغيرة (<span dir="ltr">Thermal</span>) — التوثيق رقمي وفي الكشوفات الرسمية <span dir="ltr">A4 / PDF</span>.</li>
+              <li>لا توجد باقات شهرية ولا اشتراكات متجددة ولا أي رسوم مخفية بعد الشراء.</li>
+              <li>الترخيص موقّع رقمياً (<code dir="ltr">Ed25519</code>) ومرتبط ببصمة جهاز التفعيل لحماية النسخة.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SECTION 05: Pricing & Side-by-Side Diff ================= -->
+    <section id="pricing" class="section">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="sec-idx" dir="ltr">05</span>
+          <div>
+            <span class="sec-kicker">التسعير الرسمي المعتمد</span>
+            <h2 class="section-title">نسختان واضحتان. دفعة واحدة مدى الحياة.</h2>
+            <p class="section-desc">سعر عالمي موحد بالدولار لكل الجهات والدول ($100 / $200)، وسعر محلي مخفّض حصري داخل جمهورية مصر العربية.</p>
+          </div>
+        </div>
+
+        <div class="currency-switch-wrap" data-reveal>
+          <div class="currency-switch" role="tablist" aria-label="اختر منطقة التسعير">
+            <button type="button" class="cur-btn active" data-currency="usd" role="tab" aria-selected="true">
+              🌍 السعر العالمي (USD $)
+            </button>
+            <button type="button" class="cur-btn" data-currency="egp" role="tab" aria-selected="false">
+              🇪🇬 حصري داخل مصر (ج.م)
+            </button>
+          </div>
+        </div>
+
+        <div class="pricing-pair">
+          <!-- Basic Plan -->
+          <div class="plan-card plan-basic" data-reveal>
+            <div class="plan-top">
+              <div class="plan-id">
+                <img src="assets/basic-icon.png" alt="أيقونة النسخة الأساسية" class="plan-icon" />
+                <div>
+                  <span class="mono-tag" dir="ltr">BASIC 1.2.0</span>
+                  <h3>النسخة الأساسية</h3>
+                </div>
+              </div>
+              <p class="plan-lead">مناسبة لسنتر يديره شخص واحد على جهاز كمبيوتر واحد.</p>
+            </div>
+
+            <div class="plan-price-row">
+              <strong id="price-basic-val" class="plan-price" dir="ltr">$100</strong>
+              <div class="plan-price-meta">
+                <span id="price-basic-cur">دولار أمريكي · دفعة واحدة مدى الحياة</span>
+                <small id="price-basic-alt">حصرياً داخل مصر: 5,000 جنيه مصري</small>
+              </div>
+            </div>
+
+            <ul class="plan-features">
+              <li>✓ الطلاب والملفات والبحث السريع <code dir="ltr">Ctrl+K</code></li>
+              <li>✓ المواد وتوليد جدول الحصص آلياً</li>
+              <li>✓ أجور الأساتذة والتحصيل والقفل الشهري</li>
+              <li>✓ المنصرفات والتقرير الشهري الرسمي PDF</li>
+              <li>✓ صلاحيات الموظفين والنسخ الاحتياطي والاستعادة</li>
+            </ul>
+
+            <div class="plan-actions">
+              <a href="#contact" class="btn btn-outline-ink btn-full">اطلب النسخة الأساسية ←</a>
+              <a href="assets/basic-presentation.pdf" target="_blank" rel="noopener" class="pdf-text-link">📄 معاينة العرض التعريفي لـ Basic (PDF)</a>
+            </div>
+          </div>
+
+          <!-- Pro Plan (Midnight Command Theme) -->
+          <div class="plan-card plan-pro" data-reveal>
+            <div class="plan-top">
+              <div class="plan-id">
+                <img src="assets/pro-icon.png" alt="أيقونة النسخة الاحترافية" class="plan-icon" />
+                <div>
+                  <span class="mono-tag pro-tag" dir="ltr">PRO 2.3.0 · الأكثر طلباً</span>
+                  <h3>النسخة الاحترافية</h3>
+                </div>
+              </div>
+              <p class="plan-lead">لسنتر متكامل بفريق استقبال ومشرفين وامتحانات وورش اسبوتينغ.</p>
+            </div>
+
+            <div class="plan-price-row">
+              <strong id="price-pro-val" class="plan-price" dir="ltr">$200</strong>
+              <div class="plan-price-meta">
+                <span id="price-pro-cur">دولار أمريكي · دفعة واحدة مدى الحياة</span>
+                <small id="price-pro-alt">حصرياً داخل مصر: 10,000 جنيه مصري</small>
+              </div>
+            </div>
+
+            <ul class="plan-features">
+              <li>✓ جميع مميزات النسخة الأساسية بالكامل</li>
+              <li>✓ محطات عمل ومزامنة محلية (2 استقبال + 5 مشرفين)</li>
+              <li>✓ نظام الامتحانات واللجان وشيت الكنترول العام</li>
+              <li>✓ النتائج ولوحة الشرف وشهادات التقدير A4</li>
+              <li>✓ إدارة الفعاليات وورش الاسبوتينغ وتوزيع الأرباح</li>
+            </ul>
+
+            <div class="plan-actions">
+              <a href="#contact" class="btn btn-gold btn-full">اطلب النسخة الاحترافية ←</a>
+              <a href="assets/pro-presentation.pdf" target="_blank" rel="noopener" class="pdf-text-link light-link">📄 معاينة العرض التعريفي لـ Pro (PDF)</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compact Feature Diff Matrix + Upgrade Policy -->
+        <div class="diff-strip" data-reveal>
+          <div class="diff-row">
+            <span>عدد الأجهزة والمزامنة</span>
+            <span>جهاز واحد فقط</span>
+            <strong class="val-pro">خادم + 2 استقبال + 5 مشرفين</strong>
+          </div>
+          <div class="diff-row">
+            <span>الامتحانات والشهادات</span>
+            <span>غير مشمولة</span>
+            <strong class="val-pro">كنترول + لوحة شرف + A4</strong>
+          </div>
+          <div class="diff-row">
+            <span>ورش الاسبوتينغ</span>
+            <span>غير مشمولة</span>
+            <strong class="val-pro">تذاكر وحسبة أرباح مستقلة</strong>
+          </div>
+          <div class="diff-footer">
+            <div>
+              <strong>🔁 ضمان الترقية من Basic إلى Pro في أي وقت:</strong>
+              <span id="upgrade-copy">تدفع فرق السعر فقط ($100 عالمياً، أو 5,000 جنيه مصري داخل مصر) وتنتقل جميع بياناتك بالكامل دون إعادة إدخال.</span>
+            </div>
+            <a href="assets/official-pricing.pdf" target="_blank" rel="noopener" class="btn btn-outline-ink btn-sm">وثيقة المقارنة PDF ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SECTION 06: All 7 Official PDFs Archive Shelf ================= -->
+    <section id="docs" class="section section-muted">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="sec-idx" dir="ltr">06</span>
+          <div>
+            <span class="sec-kicker">اقرأ الوثائق الكاملة قبل القرار</span>
+            <h2 class="section-title">مكتبة الأدلة والوثائق الرسمية (7 ملفات PDF)</h2>
+            <p class="section-desc">كل الأدلة والعروض التي يتسلّمها العميل متاحة هنا الآن للتصفح المباشر.</p>
+          </div>
+        </div>
+
+        <div class="docs-shelf" data-reveal>
+          <a href="assets/official-pricing.pdf" target="_blank" rel="noopener" class="doc-row">
+            <span class="doc-num mono-tag" dir="ltr">PDF 01</span>
+            <div class="doc-info">
+              <h3>وثيقة المقارنة والأسعار الرسمية المعتمدة</h3>
+              <p>جدول المقارنة الكامل بين Basic 1.2.0 و Pro 2.3.0 وتفاصيل الترقية.</p>
+            </div>
+            <span class="doc-cta">عرض PDF ←</span>
+          </a>
+
+          <a href="assets/pro-presentation.pdf" target="_blank" rel="noopener" class="doc-row">
+            <span class="doc-num mono-tag" dir="ltr">PDF 02</span>
+            <div class="doc-info">
+              <h3>العرض التعريفي المرئي (Pro — 12 شريحة)</h3>
+              <p>عرض تنفيذي يوضح قدرات النسخة الاحترافية ومحطات العمل والكنترول والاسبوتينغ.</p>
+            </div>
+            <span class="doc-cta">عرض PDF ←</span>
+          </a>
+
+          <a href="assets/basic-presentation.pdf" target="_blank" rel="noopener" class="doc-row">
+            <span class="doc-num mono-tag" dir="ltr">PDF 03</span>
+            <div class="doc-info">
+              <h3>العرض التعريفي للنسخة الأساسية (Basic 1.2.0)</h3>
+              <p>شرح عملي لإدارة السنتر الفردي: الطلاب، الحصص، الأجور، والتقارير.</p>
+            </div>
+            <span class="doc-cta">عرض PDF ←</span>
+          </a>
+
+          <a href="assets/pro-manual.pdf" target="_blank" rel="noopener" class="doc-row">
+            <span class="doc-num mono-tag" dir="ltr">PDF 04</span>
+            <div class="doc-info">
+              <h3>دليل المستخدم الشامل (16 فصلاً)</h3>
+              <p>المرجع الكامل لتشغيل كل الشاشات الـ 13 من التثبيت وحتى الطباعة والمزامنة.</p>
+            </div>
+            <span class="doc-cta">عرض PDF ←</span>
+          </a>
+
+          <a href="assets/pro-roles.pdf" target="_blank" rel="noopener" class="doc-row">
+            <span class="doc-num mono-tag" dir="ltr">PDF 05</span>
+            <div class="doc-info">
+              <h3>دليل الأدوار والصلاحيات الثلاثة</h3>
+              <p>مصفوفة مفصلة توضّح حدود المدير، مدخل البيانات، والمشرف الأكاديمي.</p>
+            </div>
+            <span class="doc-cta">عرض PDF ←</span>
+          </a>
+
+          <a href="assets/faq.pdf" target="_blank" rel="noopener" class="doc-row">
+            <span class="doc-num mono-tag" dir="ltr">PDF 06</span>
+            <div class="doc-info">
+              <h3>دليل الأسئلة الشائعة للعملاء</h3>
+              <p>إجابات سريعة حول التشغيل بلا إنترنت، المزامنة المحلية، والأمان.</p>
+            </div>
+            <span class="doc-cta">عرض PDF ←</span>
+          </a>
+
+          <a href="assets/license-policy.pdf" target="_blank" rel="noopener" class="doc-row">
+            <span class="doc-num mono-tag" dir="ltr">PDF 07</span>
+            <div class="doc-info">
+              <h3>سياسة الترخيص والدعم الفني</h3>
+              <p>قواعد التفعيل الدائم، استبدال الترخيص بعد الفورمات، ودعم الـ 3 أشهر المجاني.</p>
+            </div>
+            <span class="doc-cta">عرض PDF ←</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SECTION 07: FAQ ================= -->
+    <section id="faq" class="section">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="sec-idx" dir="ltr">07</span>
+          <div>
+            <span class="sec-kicker">إجابات واضحة ومباشرة</span>
+            <h2 class="section-title">الأسئلة الشائعة قبل الشراء</h2>
+          </div>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item" open data-reveal>
+            <summary>هل يحتاج البرنامج إلى اتصال بالإنترنت ليعمل؟</summary>
+            <p>لا، البرنامج يعمل محلياً 100% بدون إنترنت من التثبيت وحتى الطباعة والمزامنة بين المحطات داخل شبكة السنتر المحلية (Wi-Fi أو كابلات).</p>
+          </details>
+          <details class="faq-item" data-reveal>
+            <summary>ما هي أجهزة الكمبيوتر التي يعمل عليها البرنامج؟</summary>
+            <p>يعمل على أي جهاز كمبيوتر أو لابتوب بنظام Windows، وتستلم مع الشراء نسختين: نسخة تثبيت رسمية (<span dir="ltr">Setup</span>) ونسخة محمولة (<span dir="ltr">Portable</span>) تعمل فوراً.</p>
+          </details>
+          <details class="faq-item" data-reveal>
+            <summary>كيف يتم التسعير؟ وهل يختلف داخل مصر عن بقية الدول؟</summary>
+            <p>النسخة الأساسية بـ <strong>$100</strong> والنسخة الاحترافية بـ <strong>$200</strong> عالمياً ولكل الدول (دفعة واحدة مدى الحياة). وخصصنا سعراً محلياً مخفّضاً حصرياً داخل مصر: <strong>5,000 جنيه مصري</strong> للأساسية و<strong>10,000 جنيه مصري</strong> للاحترافية.</p>
+          </details>
+          <details class="faq-item" data-reveal>
+            <summary>كيف تعمل المزامنة بين الأجهزة في النسخة الاحترافية (Pro)؟</summary>
+            <p>يعمل جهاز المدير كخادم محلي داخل السنتر، ويُصدر ملفات ربط محصّنة (<code dir="ltr">.centerlink</code>) لأجهزة الاستقبال (حتى جهازين) والمشرفين (حتى 5 أجهزة). تتزامن البيانات تلقائياً كل 15 ثانية، ولو انقطعت الشبكة مؤقتاً تستمر المحطات في العمل وترسل تحديثاتها فور عودة الاتصال.</p>
+          </details>
+          <details class="faq-item" data-reveal>
+            <summary>ماذا يحدث لبياناتي لو تعطل الجهاز أو احتجت لعمل فورمات؟</summary>
+            <p>يحتفظ البرنامج بنسخ احتياطية يومية تلقائية، ويتيح تصدير نسخة يدوية كاملة بضغطة زر لحفظها على فلاشة خارجية. عند عمل فورمات أو تغيير الجهاز بسبب عطل، تتواصل معنا لإصدار ملف ترخيص بديل وتستعيد نسختك في دقائق.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SECTION 08: Brand Story & Roadmap ================= -->
+    <section id="about" class="section section-muted">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-identity" data-reveal>
+            <img src="assets/logo-full-dark.png" alt="TADBEER Educational Platform — تدبير" class="about-logo logo-for-light" />
+            <img src="assets/logo-full-light.png" alt="TADBEER Educational Platform — تدبير" class="about-logo logo-for-dark" />
+            <span class="sec-kicker">الهوية والخارطة الهندسية</span>
+            <h2 class="section-title">وراء «تدبير».. منظومة تُبنى على أرض الواقع</h2>
+            <p class="section-desc">لم نبنِ «تدبير» لندّعي صفة أكاديمية، بل انطلقنا من شغف هندسي بتنظيم بيئة التعليم في السودان والمنطقة بأدوات عملية تحترم وقت المعلم وصاحب السنتر والطالب.</p>
+          </div>
+
+          <div class="roadmap-stack" data-reveal>
+            <div class="rm-item live">
+              <span class="rm-num mono-tag" dir="ltr">01</span>
+              <div class="rm-body">
+                <div class="rm-top">
+                  <strong>برنامج إدارة السناتر التعليمية</strong>
+                  <span class="rm-pill live">متاح الآن · Pro 2.3.0 &amp; Basic 1.2.0</span>
+                </div>
+                <p>المنتج الرئيسي المكتمل والمختبر لإدارة الطلاب، الحصص، المالية، الامتحانات، الشهادات، ومحطات العمل بدون إنترنت.</p>
+              </div>
+            </div>
+
+            <div class="rm-item">
+              <span class="rm-num mono-tag" dir="ltr">02</span>
+              <div class="rm-body">
+                <div class="rm-top">
+                  <strong>نظام إدارة الكورسات والمراكز التدريبية</strong>
+                  <span class="rm-pill">قريباً</span>
+                </div>
+                <p>أداة مستقلة للمدربين والمراكز لإدارة الدورات التدريبية، الدفعات، الشهادات، ومتابعة المتدربين.</p>
+              </div>
+            </div>
+
+            <div class="rm-item">
+              <span class="rm-num mono-tag" dir="ltr">03</span>
+              <div class="rm-body">
+                <div class="rm-top">
+                  <strong>نظام إدارة المدارس</strong>
+                  <span class="rm-pill">قيد التخطيط</span>
+                </div>
+                <p>منظومة متكاملة لإدارة الفصول الدراسية، شؤون الطلاب، الكنترول المدرسي، والأقساط.</p>
+              </div>
+            </div>
+
+            <div class="rm-item">
+              <span class="rm-num mono-tag" dir="ltr">04</span>
+              <div class="rm-body">
+                <div class="rm-top">
+                  <strong>منصة تدبير التعليمية</strong>
+                  <span class="rm-pill">الرؤية المستقبلية</span>
+                </div>
+                <p>منصة سودانية شاملة تجمع الكورسات التعليمية والاختبارات الإلكترونية في مكان واحد.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FINAL CONVERSION COMMAND BOX ================= -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="cta-command-box" data-reveal>
+          <img src="assets/logo-full-light.png" alt="TADBEER Educational Platform — تدبير" class="cta-logo" />
+          <h2>جاهز لنقل سنترك من الدفاتر إلى الانضباط الكامل؟</h2>
+          <p>تواصل معنا الآن عبر واتساب لطلب نسختك (<span dir="ltr">Basic</span> أو <span dir="ltr">Pro</span>) أو لترتيب معاينة حية قبل التفعيل.</p>
+          <div class="cta-actions">
+            <a href="https://wa.me/?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC%20%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9%20%D8%A7%D9%84%D8%B3%D9%86%D8%A7%D8%AA%D8%B1%20%D9%85%D9%86%20%D8%AA%D8%AF%D8%A8%D9%8A%D8%B1" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-lg">
+              <span>تواصل عبر واتساب</span>
+              <span class="arrow-rtl" aria-hidden="true">←</span>
+            </a>
+            <a href="#theater" class="btn btn-outline-cream btn-lg">
+              <span>▶ العودة إلى مسرح الفيديو</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo-ar-dark.png" alt="تدبير" class="footer-logo logo-for-light" />
+        <img src="assets/logo-ar-light.png" alt="تدبير" class="footer-logo logo-for-dark" />
+        <span>— هندسة وتنظيم التشغيل التعليمي</span>
+      </div>
+      <div class="footer-links">
+        <a href="assets/pro-presentation.pdf" target="_blank" rel="noopener">عرض Pro (PDF)</a>
+        <a href="assets/official-pricing.pdf" target="_blank" rel="noopener">وثيقة الأسعار (PDF)</a>
+        <a href="assets/faq.pdf" target="_blank" rel="noopener">الأسئلة الشائعة (PDF)</a>
+      </div>
+      <div class="footer-copy">
+        © <span id="year">2026</span> تدبير. جميع الحقوق محفوظة.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Sticky Bottom Quick Bar (Scroll-Triggered) -->
+  <div id="mobile-dock" class="mobile-dock" aria-label="وصول سريع للهاتف">
+    <a href="#pricing" class="dock-btn-sec">النسخ والأسعار</a>
+    <a href="https://wa.me/?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC%20%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9%20%D8%A7%D9%84%D8%B3%D9%86%D8%A7%D8%AA%D8%B1%20%D9%85%D9%86%20%D8%AA%D8%AF%D8%A8%D9%8A%D8%B1" target="_blank" rel="noopener noreferrer" class="dock-btn-pri">اطلب عبر واتساب ←</a>
+  </div>
+
+  <script src="app.js?v=8"></script>
+</body>
+</html>
