@@ -207,13 +207,16 @@ ul {
 
 code {
   font-family: var(--font-mono);
-  font-size: 0.86em;
+  font-size: 0.84em;
+  line-height: 1.35;
   background: var(--c-surface-2);
   border: 1px solid var(--c-border);
-  padding: 2px 7px;
+  padding: 1px 6px;
   border-radius: 6px;
   direction: ltr;
   display: inline-block;
+  vertical-align: baseline;
+  margin-inline: 2px;
 }
 
 .container {
@@ -1651,9 +1654,9 @@ code {
   cursor: pointer;
   list-style: none;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 16px;
+  gap: 14px;
 }
 
 .faq-item summary::-webkit-details-marker {
@@ -1663,13 +1666,27 @@ code {
 .faq-item summary::after {
   content: "+";
   font-family: var(--font-mono);
-  font-size: 1.35rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--c-surface-2);
+  border: 1px solid var(--c-border);
   color: var(--c-gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+  margin-block-start: 2px;
+  transition: background var(--t), border-color var(--t), color var(--t);
 }
 
 .faq-item[open] summary::after {
   content: "−";
+  background: var(--c-gold-soft);
+  border-color: color-mix(in srgb, var(--c-gold) 36%, transparent);
 }
 
 .faq-item p {
