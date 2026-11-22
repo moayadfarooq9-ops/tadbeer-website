@@ -44,8 +44,8 @@ assets/
 │   ├── exams-and-certificates.png     <- Article #4 (Ivory + Honor Roll / A4 Spec)
 │   └── release-v2-3-0.png             <- Article #5 (Navy + Pro/Basic Release Spec)
 ├── brand/
-│   ├── og-tadbeer-share.jpg           <- 1200x630 Open Graph banner (Homepage WhatsApp/FB card)
-│   ├── og-tadbeer-blog.jpg            <- 1200x630 Open Graph banner (Blog WhatsApp/FB card)
+│   ├── og-tadbeer-cream.jpg           <- 1200x630 Open Graph banner (Cream primary homepage card)
+│   ├── og-tadbeer-blog-navy.jpg       <- 1200x630 Open Graph banner (Deep Navy blog card)
 │   └── tadbeer-touch-icon.png         <- 512x512 High-contrast app & Apple touch icon
 └── thumbnail-studio/
     ├── generate-thumbnails.py         <- Parameterized 1920x1080 & 1200x630 OG headless renderer

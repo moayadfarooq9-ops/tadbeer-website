@@ -13,9 +13,9 @@
 
 ## 2. بطاقات المعاينة عند مشاركة الروابط (`Open Graph & WhatsApp / Facebook`)
 - إضافة مولّد البطاقات والأيقونات داخل [assets/thumbnail-studio/generate-thumbnails.py](assets/thumbnail-studio/generate-thumbnails.py) (مع دعم `--og-only` للتوليد السريع).
-- تصميم بطاقة المشاركة الرئيسية [assets/brand/og-tadbeer-share.jpg](assets/brand/og-tadbeer-share.jpg) (`1200×630`، `62 KB`): خلفية كريمية صافية خالية من الخطوط والإطارات مع شعار **«تدبير»** الكوفي الكحلي بحجم كبير (`288px`) وعبارة **«وُضوحٌ. ثَباتٌ. تَدبير.»** دون أي ازدحام.
-- تصميم بطاقة المدونة والمقالات [assets/brand/og-tadbeer-blog.jpg](assets/brand/og-tadbeer-blog.jpg) (`1200×630`، `64 KB`) وأيقونة اللمس [assets/brand/tadbeer-touch-icon.png](assets/brand/tadbeer-touch-icon.png) (`512×512`، `114 KB`).
-- حقن وسوم `og:*` (`?v=32`) و`twitter:card="summary_large_image"` و`apple-touch-icon` في [index.html](index.html) و[blog.html](blog.html) و[article.html](article.html).
+- تصميم بطاقة المشاركة الرئيسية [assets/brand/og-tadbeer-cream.jpg](assets/brand/og-tadbeer-cream.jpg) (`1200×630`، `62 KB`): خلفية كريمية صافية خالية من الخطوط والإطارات مع شعار **«تدبير»** الكوفي الكحلي بحجم كبير (`288px`) وعبارة **«وُضوحٌ. ثَباتٌ. تَدبير.»** دون أي ازدحام.
+- تصميم بطاقة المدونة والمقالات [assets/brand/og-tadbeer-blog-navy.jpg](assets/brand/og-tadbeer-blog-navy.jpg) (`1200×630`، `64 KB`) وأيقونة اللمس [assets/brand/tadbeer-touch-icon.png](assets/brand/tadbeer-touch-icon.png) (`512×512`، `114 KB`).
+- حقن وسوم `og:*` (تُشير مباشرة للرابط الفريد الجديد دون قفل `og:url` على الجذر القديم) و`twitter:card="summary_large_image"` و`apple-touch-icon` في [index.html](index.html) و[blog.html](blog.html) و[article.html](article.html).
 
 ## 3. تحسين سرعة الخطوط العربية (`WOFF2 Compression`)
 - تحويل جميع ملفات الخطوط في [assets/fonts](assets/fonts) (`13` ملفاً من `.ttf`/`.otf`) إلى صيغة `WOFF2` عبر `fontTools` + `brotli`:

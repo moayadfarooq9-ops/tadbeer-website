@@ -757,13 +757,13 @@ def generate_og_assets(tmp_file: Path) -> None:
     tmp_png = STUDIO_DIR / "_tmp_og.png"
     render_og_jpeg(
         build_og_banner_html(theme="ivory", tagline="وُضوحٌ. ثَباتٌ. تَدبير."),
-        BRAND_DIR / "og-tadbeer-share.jpg",
+        BRAND_DIR / "og-tadbeer-cream.jpg",
         tmp_file,
         tmp_png,
     )
     render_og_jpeg(
         build_og_banner_html(theme="navy", tagline="مدونة تدبير العملية"),
-        BRAND_DIR / "og-tadbeer-blog.jpg",
+        BRAND_DIR / "og-tadbeer-blog-navy.jpg",
         tmp_file,
         tmp_png,
     )
