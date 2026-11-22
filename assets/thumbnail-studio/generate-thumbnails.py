@@ -626,25 +626,25 @@ def build_blog_html(cfg: dict) -> str:
 </html>"""
 
 
-def build_og_banner_html(theme: str, pill: str, tagline: str, subline: str) -> str:
-    """Build deterministic 1200x630 Open Graph / WhatsApp / Facebook social link preview card."""
+def build_og_banner_html(theme: str, tagline: str) -> str:
+    """Build minimalist luxury 1200x630 Open Graph banner for crisp WhatsApp/Facebook previews."""
     is_ivory = theme == "ivory"
     bg_css = (
-        "radial-gradient(ellipse 68% 72% at 50% 42%, rgba(194, 125, 22, 0.10), transparent 65%), "
-        "linear-gradient(150deg, #F6F1E6 0%, #EFE9DC 58%, #E5DEC9 100%)"
+        "radial-gradient(ellipse 72% 72% at 50% 46%, #FAF6EC 0%, #EFE9DC 60%, #E5DEC9 100%)"
         if is_ivory
-        else "radial-gradient(ellipse 68% 72% at 50% 42%, rgba(194, 125, 22, 0.16), transparent 64%), "
-        "linear-gradient(150deg, #10243D 0%, #0B192C 58%, #07111E 100%)"
+        else "radial-gradient(ellipse 72% 72% at 50% 46%, #163050 0%, #0D1E34 56%, #071220 100%)"
     )
     logo_svg = "tadbeer-full-dark.svg" if is_ivory else "tadbeer-full-light.svg"
-    ring_color = "rgba(15, 34, 56, 0.08)" if is_ivory else "rgba(245, 240, 218, 0.07)"
-    ring_gold = "rgba(154, 91, 6, 0.16)" if is_ivory else "rgba(232, 179, 84, 0.14)"
-    tag_color = "#0B1C30" if is_ivory else "#FAF6EB"
-    sub_color = "#3A495C" if is_ivory else "rgba(245, 240, 218, 0.88)"
-    pill_bg = "rgba(180, 108, 8, 0.12)" if is_ivory else "rgba(232, 179, 84, 0.14)"
-    pill_border = "rgba(154, 91, 6, 0.42)" if is_ivory else "rgba(232, 179, 84, 0.48)"
-    pill_color = "#9A5B06" if is_ivory else "#F3C169"
-    rule_color = "#C27D16" if is_ivory else "#E8B354"
+    logo_height = "166px" if is_ivory else "178px"
+    frame_border = "rgba(15, 34, 56, 0.14)" if is_ivory else "rgba(232, 179, 84, 0.22)"
+    ring_color = "rgba(15, 34, 56, 0.05)" if is_ivory else "rgba(245, 240, 218, 0.045)"
+    tag_color = "#0B1C30" if is_ivory else "#EFE8D5"
+    rule_mid = "#9A5B06" if is_ivory else "#E8B354"
+    top_shimmer = (
+        "linear-gradient(90deg, transparent 10%, #C27D16 50%, transparent 90%)"
+        if is_ivory
+        else "linear-gradient(90deg, transparent 10%, #E8B354 50%, transparent 90%)"
+    )
 
     return f"""<!doctype html>
 <html lang="ar" dir="rtl">
@@ -661,50 +661,49 @@ def build_og_banner_html(theme: str, pill: str, tagline: str, subline: str) -> s
   .og-stage {{
     position: relative; width: 1200px; height: 630px;
     background: {bg_css};
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    padding: 48px 72px; text-align: center;
+    display: flex; align-items: center; justify-content: center;
   }}
   .top-rule {{
-    position: absolute; top: 0; left: 0; right: 0; height: 6px;
-    background: linear-gradient(90deg, #0F2238 0%, #C27D16 50%, #E8B354 100%);
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: {top_shimmer};
+  }}
+  .inner-frame {{
+    position: absolute; inset: 28px; border-radius: 18px;
+    border: 1px solid {frame_border};
+    pointer-events: none;
   }}
   .ring {{
     position: absolute; border-radius: 50%; pointer-events: none;
-    border: 1.5px solid {ring_color};
+    border: 1px solid {ring_color};
+    width: 680px; height: 680px; top: 50%; left: 50%; transform: translate(-50%, -50%);
   }}
-  .ring.r1 {{ width: 780px; height: 780px; top: 50%; left: 50%; transform: translate(-50%, -50%); }}
-  .ring.r2 {{ width: 540px; height: 540px; top: 50%; left: 50%; transform: translate(-50%, -50%); border-color: {ring_gold}; }}
-  .inner {{
+  .center-lockup {{
     position: relative; z-index: 2;
-    display: flex; flex-direction: column; align-items: center; gap: 22px;
-    max-width: 960px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
   }}
-  .og-pill {{
-    font-size: 20px; font-weight: 700; padding: 7px 22px; border-radius: 999px;
-    background: {pill_bg}; border: 1.5px solid {pill_border}; color: {pill_color};
+  .og-logo {{ height: {logo_height}; width: auto; display: block; }}
+  .gold-bar {{
+    width: 84px; height: 2px; border-radius: 99px;
+    background: linear-gradient(90deg, transparent 0%, {rule_mid} 50%, transparent 100%);
+    margin: 28px auto 22px;
   }}
-  .og-logo {{ height: 158px; width: auto; display: block; }}
-  .gold-bar {{ width: 112px; height: 3px; border-radius: 99px; background: {rule_color}; opacity: 0.85; }}
   .og-tagline {{
     font-family: "Thmanyah Serif Display", "Thmanyah Sans", sans-serif;
-    font-size: 42px; font-weight: 700; color: {tag_color}; line-height: 1.3;
-  }}
-  .og-sub {{
-    font-size: 24px; font-weight: 600; color: {sub_color}; line-height: 1.5;
+    font-size: 36px; font-weight: 700; color: {tag_color}; line-height: 1.35;
+    letter-spacing: 0;
   }}
 </style>
 </head>
 <body>
   <div class="og-stage">
     <div class="top-rule"></div>
-    <div class="ring r1"></div>
-    <div class="ring r2"></div>
-    <div class="inner">
-      <span class="og-pill">{pill}</span>
+    <div class="inner-frame"></div>
+    <div class="ring"></div>
+    <div class="center-lockup">
       <img class="og-logo" src="file://{BRAND_DIR}/{logo_svg}" alt="تدبير" />
       <div class="gold-bar"></div>
       <div class="og-tagline">{tagline}</div>
-      <p class="og-sub">{subline}</p>
     </div>
   </div>
 </body>
@@ -782,23 +781,13 @@ def render_og_jpeg(html_text: str, out_jpg: Path, tmp_html: Path, tmp_png: Path)
 def generate_og_assets(tmp_file: Path) -> None:
     tmp_png = STUDIO_DIR / "_tmp_og.png"
     render_og_jpeg(
-        build_og_banner_html(
-            theme="navy",
-            pill="منصّة تقنيات تعليمية",
-            tagline="وُضوحٌ. ثَباتٌ. تَدبير.",
-            subline="وُضوحٌ تبدأُ به، ونظامٌ يتطوّرُ معك · أولى أدواتها: برنامج إدارة السناتر التعليمية",
-        ),
+        build_og_banner_html(theme="navy", tagline="وُضوحٌ. ثَباتٌ. تَدبير."),
         BRAND_DIR / "og-tadbeer-share.jpg",
         tmp_file,
         tmp_png,
     )
     render_og_jpeg(
-        build_og_banner_html(
-            theme="ivory",
-            pill="مدونة تدبير العملية",
-            tagline="أدلة ومذكّرات لتنظيم العمل التعليمي",
-            subline="مقالات تطبيقية في مالية السناتر، القفل الشهري، أجور الأساتذة، ومزامنة الشبكة المحلية",
-        ),
+        build_og_banner_html(theme="ivory", tagline="مدونة تدبير العملية"),
         BRAND_DIR / "og-tadbeer-blog.jpg",
         tmp_file,
         tmp_png,
