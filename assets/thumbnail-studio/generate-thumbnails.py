@@ -627,23 +627,21 @@ def build_blog_html(cfg: dict) -> str:
 
 
 def build_og_banner_html(theme: str, tagline: str) -> str:
-    """Build minimalist luxury 1200x630 Open Graph banner for crisp WhatsApp/Facebook previews."""
+    """Build ultra-clean minimalist 1200x630 Open Graph banner with dominant logo."""
     is_ivory = theme == "ivory"
     bg_css = (
-        "radial-gradient(ellipse 72% 72% at 50% 46%, #FAF6EC 0%, #EFE9DC 60%, #E5DEC9 100%)"
+        "radial-gradient(ellipse 75% 75% at 50% 48%, #FAF7EF 0%, #F2EDE0 55%, #EBE3D1 100%)"
         if is_ivory
-        else "radial-gradient(ellipse 72% 72% at 50% 46%, #163050 0%, #0D1E34 56%, #071220 100%)"
+        else "radial-gradient(ellipse 75% 75% at 50% 48%, #152E4D 0%, #0D1E34 60%, #081322 100%)"
     )
     logo_svg = "tadbeer-full-dark.svg" if is_ivory else "tadbeer-full-light.svg"
-    logo_height = "166px" if is_ivory else "178px"
-    frame_border = "rgba(15, 34, 56, 0.14)" if is_ivory else "rgba(232, 179, 84, 0.22)"
-    ring_color = "rgba(15, 34, 56, 0.05)" if is_ivory else "rgba(245, 240, 218, 0.045)"
-    tag_color = "#0B1C30" if is_ivory else "#EFE8D5"
-    rule_mid = "#9A5B06" if is_ivory else "#E8B354"
+    frame_border = "rgba(15, 34, 56, 0.10)" if is_ivory else "rgba(232, 179, 84, 0.16)"
+    tag_color = "#0F2238" if is_ivory else "#F5F0DA"
+    rule_mid = "#B46C08" if is_ivory else "#E8B354"
     top_shimmer = (
-        "linear-gradient(90deg, transparent 10%, #C27D16 50%, transparent 90%)"
+        "linear-gradient(90deg, transparent 12%, #0F2238 45%, #C27D16 55%, transparent 88%)"
         if is_ivory
-        else "linear-gradient(90deg, transparent 10%, #E8B354 50%, transparent 90%)"
+        else "linear-gradient(90deg, transparent 12%, #E8B354 50%, transparent 88%)"
     )
 
     return f"""<!doctype html>
@@ -668,29 +666,24 @@ def build_og_banner_html(theme: str, tagline: str) -> str:
     background: {top_shimmer};
   }}
   .inner-frame {{
-    position: absolute; inset: 28px; border-radius: 18px;
+    position: absolute; inset: 22px; border-radius: 16px;
     border: 1px solid {frame_border};
     pointer-events: none;
-  }}
-  .ring {{
-    position: absolute; border-radius: 50%; pointer-events: none;
-    border: 1px solid {ring_color};
-    width: 680px; height: 680px; top: 50%; left: 50%; transform: translate(-50%, -50%);
   }}
   .center-lockup {{
     position: relative; z-index: 2;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center;
   }}
-  .og-logo {{ height: {logo_height}; width: auto; display: block; }}
+  .og-logo {{ height: 245px; width: auto; display: block; }}
   .gold-bar {{
-    width: 84px; height: 2px; border-radius: 99px;
+    width: 72px; height: 2px; border-radius: 99px;
     background: linear-gradient(90deg, transparent 0%, {rule_mid} 50%, transparent 100%);
-    margin: 28px auto 22px;
+    margin: 26px auto 18px;
   }}
   .og-tagline {{
     font-family: "Thmanyah Serif Display", "Thmanyah Sans", sans-serif;
-    font-size: 36px; font-weight: 700; color: {tag_color}; line-height: 1.35;
+    font-size: 35px; font-weight: 700; color: {tag_color}; line-height: 1.3;
     letter-spacing: 0;
   }}
 </style>
@@ -699,7 +692,6 @@ def build_og_banner_html(theme: str, tagline: str) -> str:
   <div class="og-stage">
     <div class="top-rule"></div>
     <div class="inner-frame"></div>
-    <div class="ring"></div>
     <div class="center-lockup">
       <img class="og-logo" src="file://{BRAND_DIR}/{logo_svg}" alt="تدبير" />
       <div class="gold-bar"></div>
@@ -781,13 +773,13 @@ def render_og_jpeg(html_text: str, out_jpg: Path, tmp_html: Path, tmp_png: Path)
 def generate_og_assets(tmp_file: Path) -> None:
     tmp_png = STUDIO_DIR / "_tmp_og.png"
     render_og_jpeg(
-        build_og_banner_html(theme="navy", tagline="وُضوحٌ. ثَباتٌ. تَدبير."),
+        build_og_banner_html(theme="ivory", tagline="وُضوحٌ. ثَباتٌ. تَدبير."),
         BRAND_DIR / "og-tadbeer-share.jpg",
         tmp_file,
         tmp_png,
     )
     render_og_jpeg(
-        build_og_banner_html(theme="ivory", tagline="مدونة تدبير العملية"),
+        build_og_banner_html(theme="navy", tagline="مدونة تدبير العملية"),
         BRAND_DIR / "og-tadbeer-blog.jpg",
         tmp_file,
         tmp_png,

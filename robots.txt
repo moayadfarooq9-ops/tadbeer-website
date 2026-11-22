@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /assets/thumbnail-studio/
+Disallow: /versions/
+
+Sitemap: https://moayadfarooq9-ops.github.io/tadbeer-website/sitemap.xml
