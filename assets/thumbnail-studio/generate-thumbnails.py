@@ -5,12 +5,16 @@ Tadbeer Branded Thumbnail & Editorial Blog Cover Generator (1920x1080)
 Reproducible Chromium/HTML/SVG generator for TadbeerWebSite:
   - 6 Video Demo Thumbnails -> assets/demo-poster.png + assets/posters/*.png
   - 5 Editorial Blog Covers -> assets/blog/*.png
+  - 2 Social Link Preview Banners (1200x630 JPG) -> assets/brand/og-tadbeer-*.jpg
+  - 1 Touch/App Bookmark Icon (512x512 PNG) -> assets/brand/tadbeer-touch-icon.png
 
 Run from any directory:
   python3 generate-thumbnails.py
+  python3 generate-thumbnails.py --og-only
 """
 
 from pathlib import Path
+import argparse
 import subprocess
 import sys
 
@@ -28,6 +32,7 @@ BRAVE_BIN = "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
 SHARED_FONT_CSS = f"""
   @font-face {{ font-family: "Thmanyah Sans"; src: url("file://{FONTS_DIR}/thmanyahsans-Regular.otf"); font-weight: 400; }}
   @font-face {{ font-family: "Thmanyah Sans"; src: url("file://{FONTS_DIR}/thmanyahsans-Bold.otf"); font-weight: 700 900; }}
+  @font-face {{ font-family: "Thmanyah Serif Display"; src: url("file://{FONTS_DIR}/thmanyahserifdisplay-Bold.otf"); font-weight: 700; }}
   @font-face {{ font-family: "IBM Plex Sans Arabic"; src: url("file://{FONTS_DIR}/IBMPlexSansArabic-Medium.ttf"); font-weight: 500; }}
   @font-face {{ font-family: "IBM Plex Sans Arabic"; src: url("file://{FONTS_DIR}/IBMPlexSansArabic-SemiBold.ttf"); font-weight: 600; }}
   @font-face {{ font-family: "IBM Plex Sans Arabic"; src: url("file://{FONTS_DIR}/IBMPlexSansArabic-Bold.ttf"); font-weight: 700; }}
@@ -621,7 +626,124 @@ def build_blog_html(cfg: dict) -> str:
 </html>"""
 
 
-def render_html_to_png(html_text: str, out_png: Path, tmp_html: Path) -> None:
+def build_og_banner_html(theme: str, pill: str, tagline: str, subline: str) -> str:
+    """Build deterministic 1200x630 Open Graph / WhatsApp / Facebook social link preview card."""
+    is_ivory = theme == "ivory"
+    bg_css = (
+        "radial-gradient(ellipse 68% 72% at 50% 42%, rgba(194, 125, 22, 0.10), transparent 65%), "
+        "linear-gradient(150deg, #F6F1E6 0%, #EFE9DC 58%, #E5DEC9 100%)"
+        if is_ivory
+        else "radial-gradient(ellipse 68% 72% at 50% 42%, rgba(194, 125, 22, 0.16), transparent 64%), "
+        "linear-gradient(150deg, #10243D 0%, #0B192C 58%, #07111E 100%)"
+    )
+    logo_svg = "tadbeer-full-dark.svg" if is_ivory else "tadbeer-full-light.svg"
+    ring_color = "rgba(15, 34, 56, 0.08)" if is_ivory else "rgba(245, 240, 218, 0.07)"
+    ring_gold = "rgba(154, 91, 6, 0.16)" if is_ivory else "rgba(232, 179, 84, 0.14)"
+    tag_color = "#0B1C30" if is_ivory else "#FAF6EB"
+    sub_color = "#3A495C" if is_ivory else "rgba(245, 240, 218, 0.88)"
+    pill_bg = "rgba(180, 108, 8, 0.12)" if is_ivory else "rgba(232, 179, 84, 0.14)"
+    pill_border = "rgba(154, 91, 6, 0.42)" if is_ivory else "rgba(232, 179, 84, 0.48)"
+    pill_color = "#9A5B06" if is_ivory else "#F3C169"
+    rule_color = "#C27D16" if is_ivory else "#E8B354"
+
+    return f"""<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<style>
+  {SHARED_FONT_CSS}
+  * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+  html, body {{
+    width: 1200px; height: 630px; overflow: hidden;
+    font-family: "IBM Plex Sans Arabic", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }}
+  .og-stage {{
+    position: relative; width: 1200px; height: 630px;
+    background: {bg_css};
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 48px 72px; text-align: center;
+  }}
+  .top-rule {{
+    position: absolute; top: 0; left: 0; right: 0; height: 6px;
+    background: linear-gradient(90deg, #0F2238 0%, #C27D16 50%, #E8B354 100%);
+  }}
+  .ring {{
+    position: absolute; border-radius: 50%; pointer-events: none;
+    border: 1.5px solid {ring_color};
+  }}
+  .ring.r1 {{ width: 780px; height: 780px; top: 50%; left: 50%; transform: translate(-50%, -50%); }}
+  .ring.r2 {{ width: 540px; height: 540px; top: 50%; left: 50%; transform: translate(-50%, -50%); border-color: {ring_gold}; }}
+  .inner {{
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; align-items: center; gap: 22px;
+    max-width: 960px;
+  }}
+  .og-pill {{
+    font-size: 20px; font-weight: 700; padding: 7px 22px; border-radius: 999px;
+    background: {pill_bg}; border: 1.5px solid {pill_border}; color: {pill_color};
+  }}
+  .og-logo {{ height: 158px; width: auto; display: block; }}
+  .gold-bar {{ width: 112px; height: 3px; border-radius: 99px; background: {rule_color}; opacity: 0.85; }}
+  .og-tagline {{
+    font-family: "Thmanyah Serif Display", "Thmanyah Sans", sans-serif;
+    font-size: 42px; font-weight: 700; color: {tag_color}; line-height: 1.3;
+  }}
+  .og-sub {{
+    font-size: 24px; font-weight: 600; color: {sub_color}; line-height: 1.5;
+  }}
+</style>
+</head>
+<body>
+  <div class="og-stage">
+    <div class="top-rule"></div>
+    <div class="ring r1"></div>
+    <div class="ring r2"></div>
+    <div class="inner">
+      <span class="og-pill">{pill}</span>
+      <img class="og-logo" src="file://{BRAND_DIR}/{logo_svg}" alt="تدبير" />
+      <div class="gold-bar"></div>
+      <div class="og-tagline">{tagline}</div>
+      <p class="og-sub">{subline}</p>
+    </div>
+  </div>
+</body>
+</html>"""
+
+
+def build_touch_icon_html() -> str:
+    """Build 512x512 high-contrast app/touch bookmark icon featuring official Kufic mark."""
+    return f"""<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<style>
+  * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+  html, body {{ width: 512px; height: 512px; overflow: hidden; }}
+  .icon-box {{
+    width: 512px; height: 512px;
+    background: radial-gradient(circle at 30% 25%, #163357 0%, #0F2238 62%, #091525 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }}
+  .icon-box::after {{
+    content: ""; position: absolute; inset: 22px; border-radius: 82px;
+    border: 2px solid rgba(232, 179, 84, 0.28);
+  }}
+  img {{ width: 340px; height: auto; display: block; }}
+</style>
+</head>
+<body>
+  <div class="icon-box">
+    <img src="file://{BRAND_DIR}/tadbeer-ar-light.svg" alt="تدبير" />
+  </div>
+</body>
+</html>"""
+
+
+def render_html_to_png(
+    html_text: str, out_png: Path, tmp_html: Path, width: int = 1920, height: int = 1080
+) -> None:
     out_png.parent.mkdir(parents=True, exist_ok=True)
     tmp_html.write_text(html_text, encoding="utf-8")
     cmd = [
@@ -630,7 +752,7 @@ def render_html_to_png(html_text: str, out_png: Path, tmp_html: Path) -> None:
         "--disable-gpu",
         "--hide-scrollbars",
         "--force-device-scale-factor=1",
-        "--window-size=1920,1080",
+        f"--window-size={width},{height}",
         f"--screenshot={out_png}",
         f"file://{tmp_html}",
     ]
@@ -642,13 +764,61 @@ def render_html_to_png(html_text: str, out_png: Path, tmp_html: Path) -> None:
     print(f"Rendered: {out_png.relative_to(ASSETS_DIR)} ({out_png.stat().st_size // 1024} KB)")
 
 
+def render_og_jpeg(html_text: str, out_jpg: Path, tmp_html: Path, tmp_png: Path) -> None:
+    render_html_to_png(html_text, tmp_png, tmp_html, width=1200, height=630)
+    res = subprocess.run(
+        ["sips", "-s", "format", "jpeg", "-s", "formatOptions", "90", str(tmp_png), "--out", str(out_jpg)],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+    )
+    tmp_png.unlink(missing_ok=True)
+    if res.returncode != 0 or not out_jpg.exists():
+        print(f"FAILED JPG: {out_jpg}\n{res.stdout}", file=sys.stderr)
+        sys.exit(1)
+    print(f"Converted JPG: {out_jpg.relative_to(ASSETS_DIR)} ({out_jpg.stat().st_size // 1024} KB)")
+
+
+def generate_og_assets(tmp_file: Path) -> None:
+    tmp_png = STUDIO_DIR / "_tmp_og.png"
+    render_og_jpeg(
+        build_og_banner_html(
+            theme="navy",
+            pill="منصّة تقنيات تعليمية",
+            tagline="وُضوحٌ. ثَباتٌ. تَدبير.",
+            subline="وُضوحٌ تبدأُ به، ونظامٌ يتطوّرُ معك · أولى أدواتها: برنامج إدارة السناتر التعليمية",
+        ),
+        BRAND_DIR / "og-tadbeer-share.jpg",
+        tmp_file,
+        tmp_png,
+    )
+    render_og_jpeg(
+        build_og_banner_html(
+            theme="ivory",
+            pill="مدونة تدبير العملية",
+            tagline="أدلة ومذكّرات لتنظيم العمل التعليمي",
+            subline="مقالات تطبيقية في مالية السناتر، القفل الشهري، أجور الأساتذة، ومزامنة الشبكة المحلية",
+        ),
+        BRAND_DIR / "og-tadbeer-blog.jpg",
+        tmp_file,
+        tmp_png,
+    )
+    render_html_to_png(build_touch_icon_html(), BRAND_DIR / "tadbeer-touch-icon.png", tmp_file, width=512, height=512)
+
+
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--og-only", action="store_true", help="Render only 1200x630 OG banners and 512x512 icon")
+    args = parser.parse_args()
+
     tmp_file = STUDIO_DIR / "_tmp_render.html"
-    for cfg in VIDEO_THUMBNAILS:
-        render_html_to_png(build_video_html(cfg), cfg["out"], tmp_file)
-    for cfg in BLOG_COVERS:
-        render_html_to_png(build_blog_html(cfg), cfg["out"], tmp_file)
-    print(f"All {len(VIDEO_THUMBNAILS) + len(BLOG_COVERS)} thumbnails generated cleanly.")
+    if not args.og_only:
+        for cfg in VIDEO_THUMBNAILS:
+            render_html_to_png(build_video_html(cfg), cfg["out"], tmp_file)
+        for cfg in BLOG_COVERS:
+            render_html_to_png(build_blog_html(cfg), cfg["out"], tmp_file)
+    generate_og_assets(tmp_file)
+    print("Asset generation complete.")
 
 
 if __name__ == "__main__":

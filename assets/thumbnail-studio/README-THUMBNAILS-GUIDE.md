@@ -43,8 +43,12 @@ assets/
 │   ├── teacher-payroll-modes.png      <- Article #3 (Ivory + Payroll Matrix)
 │   ├── exams-and-certificates.png     <- Article #4 (Ivory + Honor Roll / A4 Spec)
 │   └── release-v2-3-0.png             <- Article #5 (Navy + Pro/Basic Release Spec)
+├── brand/
+│   ├── og-tadbeer-share.jpg           <- 1200x630 Open Graph banner (Homepage WhatsApp/FB card)
+│   ├── og-tadbeer-blog.jpg            <- 1200x630 Open Graph banner (Blog WhatsApp/FB card)
+│   └── tadbeer-touch-icon.png         <- 512x512 High-contrast app & Apple touch icon
 └── thumbnail-studio/
-    ├── generate-thumbnails.py         <- Parameterized 1920x1080 headless renderer
+    ├── generate-thumbnails.py         <- Parameterized 1920x1080 & 1200x630 OG headless renderer
     ├── README-THUMBNAILS-GUIDE.md     <- This AI handoff guide
     └── sources/                       <- Clean subtitle-free UI source screenshots
 ```
@@ -53,10 +57,12 @@ assets/
 
 ## 3. How to Regenerate or Add a New Cover (Future AI Workflow)
 
-To re-render **all 11 covers**, run from anywhere:
+To re-render **all covers + OG share cards**, run from anywhere:
 
 ```bash
 python3 "/Users/mouaid/Desktop/mouied file/MD FAROOQ/02-مشاريع/TadbeerWebSite/assets/thumbnail-studio/generate-thumbnails.py"
+# Or fast-regenerate only 1200x630 Open Graph & touch icons:
+python3 "/Users/mouaid/Desktop/mouied file/MD FAROOQ/02-مشاريع/TadbeerWebSite/assets/thumbnail-studio/generate-thumbnails.py" --og-only
 ```
 
 To add **Article #6+** (`slug: "my-new-article"`):
