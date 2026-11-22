@@ -627,7 +627,7 @@ def build_blog_html(cfg: dict) -> str:
 
 
 def build_og_banner_html(theme: str, tagline: str) -> str:
-    """Build ultra-clean minimalist 1200x630 Open Graph banner with dominant logo."""
+    """Build pure minimalist 1200x630 Open Graph banner with dominant logo and zero border/top-line clutter."""
     is_ivory = theme == "ivory"
     bg_css = (
         "radial-gradient(ellipse 75% 75% at 50% 48%, #FAF7EF 0%, #F2EDE0 55%, #EBE3D1 100%)"
@@ -635,14 +635,8 @@ def build_og_banner_html(theme: str, tagline: str) -> str:
         else "radial-gradient(ellipse 75% 75% at 50% 48%, #152E4D 0%, #0D1E34 60%, #081322 100%)"
     )
     logo_svg = "tadbeer-full-dark.svg" if is_ivory else "tadbeer-full-light.svg"
-    frame_border = "rgba(15, 34, 56, 0.10)" if is_ivory else "rgba(232, 179, 84, 0.16)"
     tag_color = "#0F2238" if is_ivory else "#F5F0DA"
     rule_mid = "#B46C08" if is_ivory else "#E8B354"
-    top_shimmer = (
-        "linear-gradient(90deg, transparent 12%, #0F2238 45%, #C27D16 55%, transparent 88%)"
-        if is_ivory
-        else "linear-gradient(90deg, transparent 12%, #E8B354 50%, transparent 88%)"
-    )
 
     return f"""<!doctype html>
 <html lang="ar" dir="rtl">
@@ -661,37 +655,26 @@ def build_og_banner_html(theme: str, tagline: str) -> str:
     background: {bg_css};
     display: flex; align-items: center; justify-content: center;
   }}
-  .top-rule {{
-    position: absolute; top: 0; left: 0; right: 0; height: 4px;
-    background: {top_shimmer};
-  }}
-  .inner-frame {{
-    position: absolute; inset: 22px; border-radius: 16px;
-    border: 1px solid {frame_border};
-    pointer-events: none;
-  }}
   .center-lockup {{
     position: relative; z-index: 2;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center;
   }}
-  .og-logo {{ height: 245px; width: auto; display: block; }}
+  .og-logo {{ height: 288px; width: auto; display: block; }}
   .gold-bar {{
-    width: 72px; height: 2px; border-radius: 99px;
+    width: 82px; height: 2px; border-radius: 99px;
     background: linear-gradient(90deg, transparent 0%, {rule_mid} 50%, transparent 100%);
-    margin: 26px auto 18px;
+    margin: 24px auto 16px;
   }}
   .og-tagline {{
     font-family: "Thmanyah Serif Display", "Thmanyah Sans", sans-serif;
-    font-size: 35px; font-weight: 700; color: {tag_color}; line-height: 1.3;
+    font-size: 38px; font-weight: 700; color: {tag_color}; line-height: 1.3;
     letter-spacing: 0;
   }}
 </style>
 </head>
 <body>
   <div class="og-stage">
-    <div class="top-rule"></div>
-    <div class="inner-frame"></div>
     <div class="center-lockup">
       <img class="og-logo" src="file://{BRAND_DIR}/{logo_svg}" alt="تدبير" />
       <div class="gold-bar"></div>
